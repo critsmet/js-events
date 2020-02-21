@@ -66,42 +66,21 @@
 //the form turns back into the 'Add Emoji' button once an emoji has been successfully submitted
 //an emoji I click on turns into '🤪'
 
-//CHYRELLE
 
 const button = document.getElementById('add-button')
 const addEmojiArea = document.getElementById('add-emoji-area')
-const emojiBank = document.getElementById("emoji-bank")
 
 addEmojiArea.addEventListener('click', handleAreaClick)
 
 function handleAreaClick(event){
-  const form = `
-    <form>
-      <input id="emoji-input" type="text"/>
-      <input id="submit" type="submit" value="Submit Emoji!" />
-    </form>
-  `
   if (event.target.id == "add-button") {
     console.log("This is the change form button")
-    addEmojiArea.innerHTML = form
+    addForm()
   }
   else if (event.target.id == "submit") {
-    event.preventDefault()
-    const emojiInput = document.getElementById('emoji-input')
-    const emoji = emojiInput.value
-
-    emojiBank.innerHTML += `
-      <li class="emoji">${emoji}</li>
-    `
-    //we already have the emoji in the 'emoji' variable, and now we want to put it in as an LI in the UL element
-    //so what should we do first?
-
     //run the function that we haven't written yet
     console.log("This is the submit emoji button")
-    const addButton = `<button id="add-button">Add Emoji</button>`
-    addEmojiArea.innerHTML = addButton
   }
-
 }
 
 //1. we want to replace the HTML inside of the add-emoji-area div with a form, not a button
@@ -115,8 +94,17 @@ function handleAreaClick(event){
 // const input = document.createElement('input')
 // form.appendChild(input)
 
+const form = `
+  <form>
+    <input id="emoji-input" type="text"/>
+    <input id="submit" type="submit" value="Submit Emoji!"
+  </form>
+`
 // button.addEventListener('click', addForm)
 
+function addForm(){
+  addEmojiArea.innerHTML = form
+}
 
 
 //SPA: Single page applications: there are no refreshes, all DOM changes are made with JS
